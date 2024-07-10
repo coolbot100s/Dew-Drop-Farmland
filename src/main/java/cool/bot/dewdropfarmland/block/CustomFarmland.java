@@ -1,7 +1,8 @@
 package cool.bot.dewdropfarmland.block;
 
+import cool.bot.botslib.util.RNG;
 import cool.bot.dewdropfarmland.Config;
-import cool.bot.dewdropfarmland.util.Util;
+import cool.bot.botslib.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -44,11 +45,11 @@ public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource
         // check before rain
         if (dayTime >= Config.dailyTimeMin && dayTime <= Config.dailyTimeMin + 10) {
             if (!Util.isMoistWaterable(level, pos)) {
-                if (random.nextInt(100) <= Config.dailyDecayChance) {
+                if (RNG.mc_ihundo(random, Config.dailyDecayChance)) {
                     level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 3);
                 }
             } else {
-                if (random.nextInt(100) <= Config.dailyDryChance) {
+                if (RNG.mc_ihundo(random, Config.dailyDryChance)) {
                     Util.setDry(level, pos);
                 }
 

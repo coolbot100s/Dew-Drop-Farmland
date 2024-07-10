@@ -24,7 +24,7 @@ public class Config
             .define("splashPotionWatering", true);
     private static final ForgeConfigSpec.IntValue SPLASH_WATER_AREA = BUILDER
             .comment("The range of splash water bottles for watering, 0 to water only the block hit")
-            .defineInRange("splashWaterArea", 2, 0, 8);
+            .defineInRange("splashWaterArea", 1, 0, 8);
     private static final ForgeConfigSpec.BooleanValue BUCKET_WATERING = BUILDER
             .comment("If buckets can be used to moisten farmland")
             .define("bucketWatering", true);

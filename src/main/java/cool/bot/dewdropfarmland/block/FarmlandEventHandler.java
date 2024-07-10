@@ -1,9 +1,8 @@
 package cool.bot.dewdropfarmland.block;
 
 import cool.bot.dewdropfarmland.Config;
-import cool.bot.dewdropfarmland.tag.ModBlockTags;
-import cool.bot.dewdropfarmland.util.Util;
-import com.mojang.logging.LogUtils;
+import cool.bot.botslib.tag.DewDropBlockTags;
+import cool.bot.botslib.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -47,13 +46,13 @@ public class FarmlandEventHandler {
                     }
                     BlockPos pos = BlockPos.containing(event.getRayTraceResult().getLocation());
                     if (Config.splashWaterArea == 0) {
-                        if (level.getBlockState(pos).is(ModBlockTags.WATERABLE)) {
+                        if (level.getBlockState(pos).is(DewDropBlockTags.WATERABLE)) {
                             Util.setMoist(((ServerLevel) level),pos);
                         }
                     } else {
                         BlockPos.withinManhattanStream(pos, Config.splashWaterArea,0,Config.splashWaterArea).forEach(blockPos -> {
                             BlockState state = level.getBlockState(blockPos);
-                            if (state.is(ModBlockTags.WATERABLE)) {
+                            if (state.is(DewDropBlockTags.WATERABLE)) {
                                 Util.setMoist(((ServerLevel) level), blockPos);
                             }
                         });
@@ -77,7 +76,7 @@ public class FarmlandEventHandler {
         ServerLevel level = (ServerLevel) event.getLevel();
         BlockPos pos = event.getPos();
         BlockState state = level.getBlockState(pos);
-        if (!state.is(ModBlockTags.WATERABLE)) {
+        if (!state.is(DewDropBlockTags.WATERABLE)) {
             return;
         }
         Player player = event.getEntity();
