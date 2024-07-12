@@ -5,6 +5,7 @@ import cool.bot.botslib.tag.DewDropBlockTags;
 import cool.bot.botslib.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
@@ -54,6 +55,8 @@ public class FarmlandEventHandler {
                             BlockState state = level.getBlockState(blockPos);
                             if (state.is(DewDropBlockTags.WATERABLE)) {
                                 Util.setMoist(((ServerLevel) level), blockPos);
+                            } else if (level.getBlockState(blockPos.below()).is(DewDropBlockTags.WATERABLE)) {
+                                Util.setMoist(((ServerLevel) level), blockPos.below());
                             }
                         });
                     }
@@ -77,7 +80,10 @@ public class FarmlandEventHandler {
         BlockPos pos = event.getPos();
         BlockState state = level.getBlockState(pos);
         if (!state.is(DewDropBlockTags.WATERABLE)) {
-            return;
+            if (state.is(BlockTags.CROPS) && level.getBlockState(pos.below()).is(DewDropBlockTags.WATERABLE)) {
+                pos = pos.below();
+                state = level.getBlockState(pos);
+            }
         }
         Player player = event.getEntity();
         ItemStack stack = player.getItemInHand(event.getHand());
