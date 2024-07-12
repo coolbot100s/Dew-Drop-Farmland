@@ -161,7 +161,7 @@ dependencies {
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
 
     //minecraftLibrary name: 'bots_lib-1.0', version: '1.0'
-    minecraftLibrary fg.deobf("maven.modrinth:bots-lib:3.1")
+    minecraftLibrary fg.deobf("maven.modrinth:bots-lib:3.3")
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
