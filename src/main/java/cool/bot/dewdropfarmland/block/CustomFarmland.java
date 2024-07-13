@@ -41,7 +41,7 @@ public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource
         if (!Config.dailyReset || !level.getGameRules().getRule(GameRules.RULE_DAYLIGHT).get()) {
             return;
         }
-        long dayTime = level.getDayTime();
+        long dayTime = level.getDayTime() % 24000;
         // check before rain
         if (dayTime >= Config.dailyTimeMin && dayTime <= Config.dailyTimeMin + 10) {
             if (!Util.isMoistWaterable(level, pos)) {
