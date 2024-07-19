@@ -46,6 +46,9 @@ public class Config
     private static final ForgeConfigSpec.IntValue DAILY_DECAY_CHANCE = BUILDER
             .comment("The chance that dry farmland will decay into dirt")
             .defineInRange("dailyDecayChance", 50, 0, 100);
+    private static final ForgeConfigSpec.BooleanValue SHOVEL_REVERTING = BUILDER
+            .comment("If shovels can turn farmland to dirt when right clicking")
+            .define("shovelReverting", true);
 
 
 
@@ -63,6 +66,7 @@ public class Config
     public static int dailyDecayChance;
     public static boolean sturdyFarmland;
     public static boolean noRandomTick;
+    public static boolean shovelReverting;
 
 
     @SubscribeEvent
@@ -80,5 +84,6 @@ public class Config
         dailyDecayChance = DAILY_DECAY_CHANCE.get();
         sturdyFarmland = STURDY_FARMLAND.get();
         noRandomTick = NO_RANDOM_TICK.get();
+        shovelReverting = SHOVEL_REVERTING.get();
     }
 }
