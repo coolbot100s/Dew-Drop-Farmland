@@ -83,6 +83,8 @@ public class FarmlandEventHandler {
             if (state.is(BlockTags.CROPS) && level.getBlockState(pos.below()).is(DewDropBlockTags.WATERABLE)) {
                 pos = pos.below();
                 state = level.getBlockState(pos);
+            } else {
+                return;
             }
         }
         Player player = event.getEntity();

@@ -117,9 +117,5 @@ run/
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 /src/generated/resources/.cache/
-/gradle/wrapper/gradle-wrapper.jar
-/gradlew
-/gradlew.bat
-/run-data/config/fml.toml
 /run-data/logs/
 .settings/org.eclipse.buildship.core.prefs
