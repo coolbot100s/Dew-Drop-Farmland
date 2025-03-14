@@ -65,7 +65,7 @@ public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource
         }
         long dayTime = level.getDayTime() % 24000;
         // check before rain
-        if (dayTime >= Config.dailyTimeMin && dayTime <= Config.dailyTimeMin + 10) {
+        if (dayTime >= Config.dailyTimeMin && dayTime < Config.dailyTimeMin + 10) {
             if (!Util.isMoistWaterable(level, pos)) {
                 if (RNG.mc_ihundo(random, Config.dailyDecayChance)) {
                     level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 3);
